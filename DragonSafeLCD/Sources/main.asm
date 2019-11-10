@@ -26,8 +26,8 @@
 ;****************************************************************
  
 ; export symbols
-            XDEF asm_main            ; export 'Entry' symbol
-            ;ABSENTRY asm_main        ; for absolute assembly: mark this as application entry point
+            XDEF Entry            ; export 'Entry' symbol
+            ABSENTRY Entry        ; for absolute assembly: mark this as application entry point
  
  
 PSEUDO_ROM       EQU       $1000     ; absolute address to place code/constant data
@@ -69,7 +69,7 @@ string2:      dc.b    "Dragon12"     ; length of 8
 ; code section
               ORG    PSEUDO_ROM    ;set PC to $1000
  
-asm_main:
+Entry:
             ; do some initialization
               lds       #STACK              ; initialize stack pointer
               movb      #output, portk_ddr  ; make Port K an Output
